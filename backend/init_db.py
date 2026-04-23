@@ -40,21 +40,34 @@ def init_db():
             author=julian
         )
 
-        db.session.add(s1)
-        db.session.add(s2)
+        # Add 100 sample stories
+        categories = ["PHILOSOPHY", "CULTURE", "TRAVEL", "FICTION", "MEMOIR"]
+        for i in range(1, 101):
+            category = categories[i % len(categories)]
+            author = elara if i % 2 == 0 else julian
+            story = Story(
+                title=f"The Silent Echo Vol. {i}",
+                content=f"This is the content for story number {i}. It explores the depths of {category.lower()} and the human condition...",
+                excerpt=f"An exploration into {category.lower()} in volume {i} of our ongoing series.",
+                category=category,
+                read_time=f"{5 + (i % 15)} MIN READ",
+                image_url=f"https://picsum.photos/seed/{i+100}/800/600",
+                author=author
+            )
+            db.session.add(story)
 
-        # Add sample books
-        b1 = Book(
-            title="The Quiet Mind",
-            author="Elara Aldridge",
-            price="$24.00",
-            cover_url="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=300"
-        )
-        
-        db.session.add(b1)
+        # Add 100 sample books
+        for i in range(1, 101):
+            book = Book(
+                title=f"Quietude Collection: Volume {i}",
+                author=f"Author {i}",
+                price=f"${15 + (i % 40)}.00",
+                cover_url=f"https://picsum.photos/seed/{i}/400/600"
+            )
+            db.session.add(book)
         
         db.session.commit()
-        print("Database initialized with sample data.")
+        print(f"Database initialized with {Story.query.count()} stories and {Book.query.count()} books.")
 
 if __name__ == '__main__':
     init_db()
