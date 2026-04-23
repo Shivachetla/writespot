@@ -4,7 +4,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from models import db, User, Story, Book
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend', static_url_path='')
 CORS(app)
 
 # Configuration
@@ -80,6 +80,15 @@ def get_books():
 def get_user_profile(username):
     user = User.query.filter_by(username=username).first_or_404()
     return jsonify(user.to_dict())
+
+# Serve Frontend
+@app.route('/')
+def index():
+    return app.send_static_file('homepage/code.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return app.send_static_file(path)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
