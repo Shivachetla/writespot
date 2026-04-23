@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,700;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#7a2f00",
+                    "on-error": "#ffffff",
+                    "primary": "#3318b8",
+                    "secondary-container": "#dce2f3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c8c4d7",
+                    "on-tertiary-container": "#ffbb9c",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed-dim": "#c0c7d6",
+                    "tertiary-fixed-dim": "#ffb693",
+                    "on-background": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#c5c0ff",
+                    "tertiary-fixed": "#ffdbcc",
+                    "primary-fixed": "#e4dfff",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary": "#585f6c",
+                    "on-surface-variant": "#474554",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-container": "#edeeef",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed": "#dce2f3",
+                    "on-secondary-fixed-variant": "#404754",
+                    "surface-bright": "#f8f9fa",
+                    "background": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#6d2900",
+                    "on-primary-fixed": "#140067",
+                    "surface-dim": "#d9dadb",
+                    "on-secondary-container": "#5e6572",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#351000",
+                    "outline": "#787586",
+                    "inverse-primary": "#c5c0ff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#151c27",
+                    "surface-tint": "#5546d8",
+                    "on-primary-fixed-variant": "#3c27c0",
+                    "primary-container": "#4c3bcf",
+                    "tertiary-container": "#923a00",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-container": "#cac5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "1rem",
+                    "unit": "4px",
+                    "reading-width": "680px",
+                    "xl": "4rem",
+                    "lg": "2rem",
+                    "container-max": "1120px",
+                    "xs": "0.5rem",
+                    "md": "1.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Noto Serif"],
+                    "ui-button": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-xl": ["Noto Serif"],
+                    "headline-md": ["Noto Serif"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "ui-button": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .premium-mask {
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b bg-white/80 backdrop-blur-md border-stone-200 shadow-[0_4px_20px_-10px_rgba(76,59,207,0.05)]">
+<div class="flex justify-between items-center h-16 px-8 max-w-7xl mx-auto font-serif antialiased text-stone-900">
+<div class="text-2xl font-serif italic font-black text-indigo-700">Quietude Stories</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80" href="#">Home</a>
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80" href="#">Explore</a>
+<a class="text-indigo-700 font-bold border-b-2 border-indigo-700 pb-1 transition-all duration-300 ease-out hover:opacity-80" href="#">Profile</a>
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80" href="#">Notifications</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-stone-500 hover:text-stone-900 transition-transform active:scale-95">search</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-ui-button text-ui-button transition-all duration-300 hover:opacity-90 active:scale-95">Login</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-32 pb-24">
+<!-- Author Profile Header Section -->
+<section class="max-w-7xl mx-auto px-8 mb-xl">
+<div class="flex flex-col md:flex-row gap-lg items-start md:items-center border-b border-outline-variant pb-lg">
+<div class="relative">
+<div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-lg">
+<img alt="Evelyn Thorne" class="w-full h-full object-cover" data-alt="close-up portrait of a thoughtful woman with soft lighting, warm studio atmosphere, elegant editorial style photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRWCJUv-J-QSiP2AUPIe1Y2ESP-UVc4GQAtbaikrwecyJx6SnhdbST_lf-0SV-yusX0-YkY5OSjR9RWl5-cDTvKTesZCETIO0PfvRsBytHPaZgE7dwSfB6xiwnPS54Q3h3w8vUXx2eumsC5YlQfuUrMcc_PWZVmYZ9T475KWg0plI5oc2aACcJPgNNflqTOIWaVlG35S4d7s-21lWzNqFZx3DInNfjcytPn5MZqSeF6RnKTTojZUlVfd0XYHGPaV9n2PFlp3AXQN4"/>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary p-2 rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 space-y-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Evelyn Thorne</h1>
+<p class="font-body-md text-secondary mt-1">Founding Editor &amp; Philosophical Essayist</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-ui-button text-ui-button shadow-lg transition-transform active:scale-95 hover:opacity-90">Follow</button>
+<button class="border border-primary text-primary px-4 py-3 rounded-full flex items-center justify-center transition-transform active:scale-95 hover:bg-primary-container/10">
+<span class="material-symbols-outlined">mail</span>
+</button>
+</div>
+</div>
+<div class="max-w-reading-width">
+<p class="font-body-lg text-body-lg text-on-surface-variant italic">
+                            "Exploring the intersections of intentional living, classical philosophy, and the quiet moments that define our shared humanity. I write for those who find solace in the long-form."
+                        </p>
+</div>
+<div class="flex gap-lg">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">12.4k</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Followers</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">842</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Following</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">47</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Stories</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tabs Section -->
+<section class="max-w-7xl mx-auto px-8 mb-lg">
+<div class="flex gap-lg border-b border-outline-variant">
+<button class="pb-md font-label-sm text-label-sm border-b-2 border-primary text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">auto_stories</span>
+                    FREE STORIES
+                </button>
+<button class="pb-md font-label-sm text-label-sm border-b-2 border-transparent text-secondary hover:text-on-surface flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
+                    PREMIUM COLLECTION
+                </button>
+</div>
+</section>
+<!-- Bento Grid Stories -->
+<section class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Large Featured Card -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-[0_4px_20px_-10px_rgba(49,46,129,0.05)] hover:shadow-xl transition-all duration-500">
+<div class="relative h-96 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="dramatic mountain landscape at dusk with atmospheric mist and deep blue tones, fine art editorial nature photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-BC1tdqesjQq_Q0zyQ6Ek_rLBa-YoI4DjzKiYN30zosIrHbHaSnGibs4wdvDL0w6BYkUHGqQhHfH4YjJpLDUBHqQgjN88KS9iUEL742BFSUYAIpLiVSSXiDqsSfsJQQRUKLQabEcbmxvTJRQfbeP8_AU3fp11kAAvBzw45kYeyYBj14Eu8HRzNv1ZdrmM8G7imr0HmlPWlvt8kYA5-kl0qMQx5OPFID_ev7Q_MJMCLHHi3HvNKQWSnuQJ7Gp0nDhMiXh3ck9RG5M"/>
+<div class="absolute top-4 left-4">
+<span class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full font-label-sm text-label-sm text-primary uppercase">Long Read</span>
+</div>
+</div>
+<div class="p-lg">
+<div class="flex items-center gap-sm mb-sm text-secondary font-label-sm text-label-sm">
+<span>Oct 24, 2024</span>
+<span>•</span>
+<span>12 min read</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface group-hover:text-primary transition-colors mb-md leading-tight">The Architecture of Silence: Finding Meaning in Stillness</h2>
+<p class="font-body-md text-on-surface-variant line-clamp-3">In an age of constant notification, silence has become the ultimate luxury. This essay explores how we can reclaim our internal space through intentional quietude and minimalist living principles...</p>
+</div>
+</div>
+</div>
+<!-- Secondary Cards Column -->
+<div class="md:col-span-4 flex flex-col gap-lg">
+<div class="bg-white border border-stone-200 rounded-xl p-lg shadow-[0_4px_20px_-10px_rgba(49,46,129,0.05)] hover:shadow-lg transition-all duration-300 group cursor-pointer">
+<div class="flex items-center gap-sm mb-sm text-secondary font-label-sm text-label-sm">
+<span>Sep 18, 2024</span>
+<span>•</span>
+<span>5 min read</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors leading-snug">The Morning Ritual</h3>
+<p class="font-body-md text-on-surface-variant mt-sm line-clamp-2">How coffee and three pages of handwritten thoughts transformed my creative process.</p>
+</div>
+<div class="bg-stone-900 text-stone-50 rounded-xl p-lg shadow-xl group cursor-pointer relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-widest">Premium Only</span>
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<h3 class="font-headline-md text-headline-md group-hover:text-primary-fixed transition-colors leading-snug">Lessons from the Roman Stoics</h3>
+<p class="font-body-md text-stone-400 mt-sm line-clamp-2">A deep dive into Marcus Aurelius and the practical application of virtue in modern tech culture.</p>
+<div class="mt-lg">
+<button class="bg-primary-fixed text-on-primary-fixed px-4 py-2 rounded-lg font-ui-button text-xs font-bold uppercase tracking-widest">Subscribe to Unlock</button>
+</div>
+</div>
+</div>
+<!-- More Stories Grid -->
+<div class="md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-lg mt-lg">
+<div class="group cursor-pointer">
+<div class="h-64 rounded-xl overflow-hidden mb-md border border-stone-200">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="stack of vintage books in a sunlit library with dust motes dancing in the light, peaceful academic atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY_tZg87ipI0Bolm9YgN6CvUisvY49Ju50XBdCetw-iiCGMFHu-2BFavn4TrfXCYxheJs2kGrxLG_-HmVum1aUwF52z24kv6jtt5fExhgBBq7zJ9vilR72BbgmZREhPhXzgg5ooy_tspLpDguV9Fi_7s6uG0IEEuYrdcawoa_6X3zxZ0QlRq81xF4QIlLt70r2UOe8lmeBaONzCmnUwoC5OPqQwMiE3uJPXbrgxbS7OQUpfSvOsVahwB4X_QGNw52ytNoFWwPK-mg"/>
+</div>
+<h4 class="font-headline-md text-[24px] text-on-surface group-hover:text-primary transition-colors">The Bibliophile's Lament</h4>
+<p class="font-body-md text-on-surface-variant mt-xs">On the physical weight of digital knowledge.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="h-64 rounded-xl overflow-hidden mb-md border border-stone-200">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="minimalist architectural detail of a concrete wall and sharp shadows, high contrast editorial style photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAoa5dJwqUBLklzLWjeYBZzh5LNsGwoo87Oka3nUpatKi85QT-6aAQSvB6u6mV79q8YbaHWlxCiwYF1VAjR9geB_rk4by6asVTF6f-6GtgEUqUW2XQcFjlqEmBqR1l10mvKad62cMEbg9-vbYnaGc3S-vxYnR2Ls6TtQKrunYu4qCj_7UozIXD6oRASHRbP92xwdurLo5iBlDKN1Knetcs7haES2_vV4ecMBGBirUl99YRPa5FCWRwJDVh_2BMSQ6Njf7be8QI8Us"/>
+</div>
+<h4 class="font-headline-md text-[24px] text-on-surface group-hover:text-primary transition-colors">Brutalist Empathy</h4>
+<p class="font-body-md text-on-surface-variant mt-xs">Finding the human element in concrete structures.</p>
+</div>
+<div class="group cursor-pointer relative">
+<div class="absolute inset-0 bg-white/40 backdrop-blur-sm z-10 flex flex-col items-center justify-center rounded-xl border border-stone-100">
+<span class="material-symbols-outlined text-primary mb-2" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">PREMIUM ARCHIVE</span>
+</div>
+<div class="h-64 rounded-xl overflow-hidden mb-md border border-stone-200 grayscale opacity-30">
+<img class="w-full h-full object-cover" data-alt="desolate winter beach with soft grey skies and crashing waves, melancholic editorial photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW7OAohy6Nt76-s24IrEDJfXSDnSqbXtdY3hRwnkX5_5rcfBepXnpqHP_GRdQoTfZ2knUdhW5Fy7dFBYUl_MdFx35b2AoazK5fde5pikueqLtJsJMNbX5lS131i5C4TGyshQWpawGo8O2wYrmUaQarx5BXaigFicQQpH64E0Rb_eWMQyXQ6MILbgR6qZhojxlynT2kDYN33AxPGUZ0tlH1KUtxiHhc5PSnn22tCGoNUCaKC1ux6-A014LJhluwT8ynOFtkBBeFwew"/>
+</div>
+<h4 class="font-headline-md text-[24px] text-on-surface opacity-50">Winter in Venice</h4>
+<p class="font-body-md text-on-surface-variant opacity-50 mt-xs">A narrative journey through the empty canals.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pagination/Load More -->
+<section class="max-w-7xl mx-auto px-8 mt-xl text-center">
+<button class="border border-stone-300 text-stone-600 px-12 py-4 rounded-full font-ui-button text-ui-button hover:border-primary hover:text-primary transition-all duration-300 active:scale-95">
+                Load More Stories
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t mt-auto bg-stone-50 border-stone-200">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center font-serif text-sm tracking-tight text-stone-600">
+<div>
+<div class="font-serif italic font-bold text-stone-900 text-lg mb-2">Quietude Stories</div>
+<p>© 2024 Quietude Stories. A sanctuary for long-form thought.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-2 justify-start md:justify-end">
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">About</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Guidelines</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Privacy</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Bookstore</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Authors</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

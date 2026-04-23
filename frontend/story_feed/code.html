@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quietude Stories - Social Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-error": "#ffffff",
+                        "primary": "#3318b8",
+                        "secondary-container": "#dce2f3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c8c4d7",
+                        "on-tertiary-container": "#ffbb9c",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "tertiary-fixed-dim": "#ffb693",
+                        "on-background": "#191c1d",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#c5c0ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "primary-fixed": "#e4dfff",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary": "#585f6c",
+                        "on-surface-variant": "#474554",
+                        "surface-variant": "#e1e3e4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed": "#dce2f3",
+                        "on-secondary-fixed-variant": "#404754",
+                        "surface-bright": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#6d2900",
+                        "on-primary-fixed": "#140067",
+                        "surface-dim": "#d9dadb",
+                        "on-secondary-container": "#5e6572",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#351000",
+                        "outline": "#787586",
+                        "inverse-primary": "#c5c0ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-tint": "#5546d8",
+                        "on-primary-fixed-variant": "#3c27c0",
+                        "primary-container": "#4c3bcf",
+                        "tertiary-container": "#923a00",
+                        "inverse-surface": "#2e3132",
+                        "on-primary-container": "#cac5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "1rem",
+                        "unit": "4px",
+                        "reading-width": "680px",
+                        "xl": "4rem",
+                        "lg": "2rem",
+                        "container-max": "1120px",
+                        "xs": "0.5rem",
+                        "md": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Noto Serif"],
+                        "ui-button": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-xl": ["Noto Serif"],
+                        "headline-md": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "ui-button": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+<script src="../api.js"></script>
+</head>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b bg-white/80 backdrop-blur-md border-stone-200 shadow-[0_4px_20px_-10px_rgba(76,59,207,0.05)]">
+<div class="flex justify-between items-center h-16 px-8 max-w-7xl mx-auto">
+<div class="text-2xl font-serif italic font-black text-indigo-700">Quietude Stories</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-indigo-700 font-bold border-b-2 border-indigo-700 pb-1 font-serif antialiased" href="#">Home</a>
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80 font-serif antialiased" href="#">Explore</a>
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80 font-serif antialiased" href="#">Profile</a>
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80 font-serif antialiased" href="#">Notifications</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative group hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-stone-100 border-transparent rounded-full text-sm focus:bg-white focus:border-indigo-300 focus:ring-0 transition-all w-48 lg:w-64" placeholder="Search stories..." type="text"/>
+</div>
+<button class="bg-indigo-700 text-white px-6 py-2 rounded-full font-ui-button text-ui-button active:scale-95 transition-transform">Login</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-20 max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Center Column (Reading Width) -->
+<div class="lg:col-span-8 flex flex-col space-y-12">
+<!-- Story Post 1 -->
+<article class="bg-white border border-stone-200 rounded-xl p-8 shadow-[0_4px_20px_-10px_rgba(49,46,129,0.05)] transition-all hover:shadow-[0_8px_30px_-10px_rgba(49,46,129,0.08)]">
+<div class="flex items-center space-x-4 mb-6">
+<img class="w-12 h-12 rounded-full object-cover border border-stone-100" data-alt="Portrait of a young woman with a thoughtful expression in a soft-lit creative studio space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlPT7wWz9aFv73uFsCYNR1P_wOucZCy6wLWv_jEnBqFuEer9vy4yO4KQ847mRwEgEh_Jr-ohl9ZW4j8Tt3U3payjClVqQxAulYKOEvSy9QpZFe7ZT6wnSk98o95ExYjnsyw9v5ihNtOKxcK5eD_xtwYqM008JzFYOoIbxFiB4xgyOcWsTphFnBw9vwUNtxg7IvGSQJfN-amCUfSAWcejjkX3rrJXYurQErsbTFj8RRBKTtRXuvHGM2oTrretr_4oVobyOm88kOiDA"/>
+<div>
+<h4 class="font-body-md font-bold text-on-surface">Elena Vance</h4>
+<p class="font-label-sm text-stone-400">Published 3h ago · 8 min read</p>
+</div>
+</div>
+<div class="max-w-[680px] mx-auto">
+<h2 class="font-headline-md text-on-surface mb-4 leading-tight">The Architecture of Silence: Finding Stillness in a Loud World</h2>
+<p class="font-body-lg text-on-surface-variant mb-6 line-clamp-3">
+                        In the heart of the modern metropolis, silence is no longer a natural state but a carefully constructed luxury. We build thick walls, invest in noise-canceling technology, and retreat to remote cabins, yet the most profound silence isn't found in the absence of sound, but in the intentionality of our attention...
+                    </p>
+<a class="inline-flex items-center text-primary font-ui-button hover:underline underline-offset-4 decoration-2" href="#">
+                        Read More
+                        <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span>
+</a>
+<div class="mt-8 pt-6 border-t border-stone-100 flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center space-x-2 text-stone-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-sm font-medium">1.2k</span>
+</button>
+<button class="flex items-center space-x-2 text-stone-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-sm font-medium">42</span>
+</button>
+</div>
+<button class="text-stone-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Story Post 2 (Premium) -->
+<article class="bg-white border border-stone-200 rounded-xl p-8 shadow-[0_4px_20px_-10px_rgba(49,46,129,0.05)] relative overflow-hidden">
+<!-- Premium Badge -->
+<div class="absolute top-0 right-0 bg-gradient-to-l from-tertiary/20 to-transparent pl-12 pr-4 py-4 flex items-center">
+<div class="flex items-center bg-tertiary text-white px-3 py-1 rounded-full space-x-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm uppercase tracking-widest text-[10px]">Premium</span>
+</div>
+</div>
+<div class="flex items-center space-x-4 mb-6">
+<img class="w-12 h-12 rounded-full object-cover border border-stone-100" data-alt="Close-up portrait of a mature man with graying hair and spectacles, conveying wisdom and experience" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRvMtQajqfPIo3ohqESzvUoFVlNP50n05Jt_F6_bg94c8qW0Y3vQ2pF8ZesHhCQtl1un2rbD4-0ew-ABpQJL7Nrb_d_q2ReHl9hyiP7LQTy4Y0rPQFiBpfLtJgWYY4ZI1gqBxgRwgmUe66WAQNiTym5RV260G5mMiAa0-w60sy6dN24HbSqPWPwOTx6egkwEfWoE7KviGr27qgGSpyEEAwKL9klneNjA8PsV-CKuwxzaG4Ti5Mypt_RPr_DP5Ac-XnllI6nbrI3t4"/>
+<div>
+<h4 class="font-body-md font-bold text-on-surface">Dr. Julian Thorne</h4>
+<p class="font-label-sm text-stone-400">Published 6h ago · 15 min read</p>
+</div>
+</div>
+<div class="max-w-[680px] mx-auto">
+<h2 class="font-headline-md text-on-surface mb-4 leading-tight">The Neurochemistry of Creativity: Why Boredom is Your Best Friend</h2>
+<p class="font-body-lg text-on-surface-variant mb-6 italic opacity-60 pointer-events-none select-none">
+                        This exclusive long-form essay explores the critical link between downtime and the brain's default mode network. Dr. Thorne dissects why our most brilliant ideas often arrive in the shower or during a long, aimless walk...
+                    </p>
+<div class="bg-stone-50 rounded-lg p-6 border border-stone-100 flex flex-col items-center text-center space-y-4">
+<p class="text-sm text-stone-600 font-serif">Unlock the full narrative and support the author.</p>
+<button class="bg-tertiary text-white px-8 py-2.5 rounded-full font-ui-button text-ui-button hover:bg-tertiary-container transition-colors shadow-sm">Subscribe to Unlock</button>
+</div>
+<div class="mt-8 pt-6 border-t border-stone-100 flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center space-x-2 text-stone-300 cursor-not-allowed">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-sm font-medium">856</span>
+</button>
+<button class="flex items-center space-x-2 text-stone-300 cursor-not-allowed">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-sm font-medium">12</span>
+</button>
+</div>
+<button class="text-stone-300 cursor-not-allowed">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Story Post 3 -->
+<article class="bg-white border border-stone-200 rounded-xl p-8 shadow-[0_4px_20px_-10px_rgba(49,46,129,0.05)]">
+<div class="flex items-center space-x-4 mb-6">
+<img class="w-12 h-12 rounded-full object-cover border border-stone-100" data-alt="Portrait of a female artist with paint-stained hands, looking directly into the camera with intensity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7TMDxSHAp_xy0aF1CrIu53-sUDYzVvQprkL1oo0aRDicGNY6yrYFumspEMV9WEyTbcOHx6ZwrLq7Gnfrq2zLgQ_fSQAmvwkbaOzljKfJVvvgrsDp-IZBR3tKPX_hZ_dEk37nn93o-bRUvjOnbTeMPAUCo1LM1mtjVh9YhvxAmYqMlh86lNjBuXZ21ZxY5dUYkQ31sHAAYXF4jeF1PGNJkkwyTB0x54NQuqHSv_kOCN5bSV8A3RpM8dgiE1gnqErVFdw8f0rZGS3o"/>
+<div>
+<h4 class="font-body-md font-bold text-on-surface">Maya Sterling</h4>
+<p class="font-label-sm text-stone-400">Published Yesterday · 5 min read</p>
+</div>
+</div>
+<div class="max-w-[680px] mx-auto">
+<div class="mb-6 rounded-lg overflow-hidden h-64">
+<img class="w-full h-full object-cover" data-alt="Wide cinematic shot of misty mountains at dawn with layers of blue and purple hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKcTFZpuUSV-x1VAdwrPvtEqHFHV2hK7FVA9CGoFAXgs9qPlEf3miq5nTWNCTE2enbu6i2WTeU9jggkVGotLcVLXb6GT1HhX4KmX-GT8Tj67NgI21c-VO627OHsYojiU4kpUAlbj_GoUCVzlxuTpL6xbGmTg203ZbFyliWVYt-BqiH0ZPqzorkv6FbqkUAaoAQKSGbn-bNiBXJeX31Qd8_oS1Rw0JYXYetToxuVJu_3btP3pEYlgCOZADnayjC5ECxaggTE4I5dA8"/>
+</div>
+<h2 class="font-headline-md text-on-surface mb-4 leading-tight">Visual Journaling: Capturing the Unseen</h2>
+<p class="font-body-lg text-on-surface-variant mb-6 line-clamp-2">
+                        How we see defines how we live. For the past decade, I've carried a notebook not for words, but for the geometry of shadows and the rhythm of urban life...
+                    </p>
+<a class="inline-flex items-center text-primary font-ui-button hover:underline underline-offset-4 decoration-2" href="#">
+                        Read More
+                        <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span>
+</a>
+<div class="mt-8 pt-6 border-t border-stone-100 flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center space-x-2 text-stone-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-sm font-medium">3.4k</span>
+</button>
+<button class="flex items-center space-x-2 text-stone-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-sm font-medium">128</span>
+</button>
+</div>
+<button class="text-stone-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Right Sidebar -->
+<aside class="lg:col-span-4 hidden lg:block">
+<div class="sticky top-24 space-y-8">
+<!-- Suggested Authors -->
+<div class="bg-white border border-stone-200 rounded-xl p-6 shadow-[0_4px_20px_-10px_rgba(49,46,129,0.05)]">
+<h3 class="font-serif italic font-bold text-lg mb-6 text-on-surface">Suggested Authors</h3>
+<div class="space-y-6">
+<!-- Author 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Professional headshot of a male writer with a beard, wearing a linen shirt in a garden setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoF2ZYk4TdSiuzzzBjmY3Lb1GVw45gBqmosqv-XrXBjmw5USJGkrWdDMZFb1MTsbe95lpJXnUSm-ZuBWsHRFmnNkul-kDytk20N76eoDc3h8YB_R7MqyYZ6NrmfklIZtSsW49KXAd_D6cmt4QIO2H9Zrv9CIi7v6ZBZpFBskJWv7YukyYzG7Ij0x9MGUcS2sqoO9ZgSEjigJ8q-cfVdep1TBjoy8jLGCNaFUI25MsRq5odMDwThsBURbXzkjC3xLEdJ1cgpvB6weA"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Thomas Wright</p>
+<p class="text-[11px] text-stone-400 font-label-sm">Philosophical Essays</p>
+</div>
+</div>
+<button class="text-primary font-ui-button text-xs border border-primary px-3 py-1 rounded-full hover:bg-primary hover:text-white transition-all">Follow</button>
+</div>
+<!-- Author 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a young woman with curly hair looking away with a pensive look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTYQbRqO3sf7pECg-itzxvr08MwDYHhusodOKyltz8Fh_ra_-0sAymcvfDkdlY3oupfNQz7Dq8lZpQlKOCsIx--NiM5vEds4LO4DUsBf0dlWBUdv5-9VWeEqD_lSyE7eAgp1OiWx2m1wOE1LzMeal7pr_oXmXeGly5VBk-Y5oMb6wqLWuwt677_nSlbtv9wte112iG54BYi3CjJ3HPMW5WgG99OFetuOsynozc9EHEHahQGO2cTO3u0YBtCipudFLtDUFO-xPh9ys"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Isla Chen</p>
+<p class="text-[11px] text-stone-400 font-label-sm">Travel Memoirs</p>
+</div>
+</div>
+<button class="text-primary font-ui-button text-xs border border-primary px-3 py-1 rounded-full hover:bg-primary hover:text-white transition-all">Follow</button>
+</div>
+<!-- Author 3 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Enthusiastic smiling man with glasses in a modern library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlR6b3L5O4X6E7ah86f9qnrqXFB7ms__Tn9UXKOE6EjT8bNWDBxMg3yi9EvZkStLMz98w_V4ZsOZtxAq8voT5HUikmNtf5hp2pWpbzT9sNsgA7A9MuOgzo6Zt6l1ahSOj-nlI_vDgR5NoVupCAz2qHWNXXHQ17AyHyv2ZsXbax4EH2E4Q-pTZ6hWi3mRQzoyOPM8FZ86Ez00gG2PbF9g-MrnCbKuB4tRhf1CyaM4lnlNR2bgHwstj3UCQf7rdKReZ4_NQRgFGsrUY"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Oliver Kent</p>
+<p class="text-[11px] text-stone-400 font-label-sm">Future of Tech</p>
+</div>
+</div>
+<button class="text-primary font-ui-button text-xs border border-primary px-3 py-1 rounded-full hover:bg-primary hover:text-white transition-all">Follow</button>
+</div>
+</div>
+<button class="w-full mt-8 text-stone-400 font-label-sm text-xs hover:text-primary transition-colors py-2 border-t border-stone-50">
+                        View all contributors
+                    </button>
+</div>
+<!-- Trending Topics -->
+<div class="p-6">
+<h3 class="font-label-sm uppercase tracking-widest text-[11px] text-stone-400 mb-4">Trending Thought</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-stone-200/50 text-stone-600 px-3 py-1 rounded-full text-xs font-medium cursor-pointer hover:bg-stone-200">#minimalism</span>
+<span class="bg-stone-200/50 text-stone-600 px-3 py-1 rounded-full text-xs font-medium cursor-pointer hover:bg-stone-200">#stoicism</span>
+<span class="bg-stone-200/50 text-stone-600 px-3 py-1 rounded-full text-xs font-medium cursor-pointer hover:bg-stone-200">#urbanism</span>
+<span class="bg-stone-200/50 text-stone-600 px-3 py-1 rounded-full text-xs font-medium cursor-pointer hover:bg-stone-200">#digitalwellbeing</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t mt-auto bg-stone-50 border-stone-200">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div class="flex flex-col space-y-4">
+<div class="font-serif italic font-bold text-stone-900 text-xl">Quietude Stories</div>
+<p class="font-serif text-sm tracking-tight text-stone-600 max-w-sm">© 2024 Quietude Stories. A sanctuary for long-form thought. Dedicated to the depth of human expression.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-all text-sm font-serif" href="#">About</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-all text-sm font-serif" href="#">Guidelines</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-all text-sm font-serif" href="#">Privacy</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-all text-sm font-serif" href="#">Bookstore</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-all text-sm font-serif" href="#">Authors</a>
+<a class="text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-all text-sm font-serif" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script>
+    async function loadFeed() {
+        const stories = await api.getStories();
+        const container = document.querySelector('.lg\\:col-span-8');
+        if (!container) return;
+
+        // Keep the first article if we want some static placeholder, but let's replace all for real data
+        container.innerHTML = '';
+
+        stories.forEach(story => {
+            const article = document.createElement('article');
+            article.className = "bg-white border border-stone-200 rounded-xl p-8 shadow-[0_4px_20px_-10px_rgba(49,46,129,0.05)] transition-all hover:shadow-[0_8px_30px_-10px_rgba(49,46,129,0.08)] mb-12";
+            article.innerHTML = `
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold border border-stone-100">
+                        ${story.author.substring(0,2).toUpperCase()}
+                    </div>
+                    <div>
+                        <h4 class="font-body-md font-bold text-on-surface">${story.author}</h4>
+                        <p class="font-label-sm text-stone-400">Published ${new Date(story.created_at).toLocaleDateString()} · ${story.read_time}</p>
+                    </div>
+                </div>
+                <div class="max-w-[680px] mx-auto">
+                    ${story.image_url ? `<div class="mb-6 rounded-lg overflow-hidden h-64"><img src="${story.image_url}" class="w-full h-full object-cover"></div>` : ''}
+                    <h2 class="font-headline-md text-on-surface mb-4 leading-tight">${story.title}</h2>
+                    <p class="font-body-lg text-on-surface-variant mb-6 line-clamp-3">
+                        ${story.excerpt || story.content.substring(0, 200) + '...'}
+                    </p>
+                    <a href="#" class="inline-flex items-center text-primary font-ui-button hover:underline underline-offset-4 decoration-2">
+                        Read More
+                        <span class="material-symbols-outlined text-[18px] ml-1">arrow_forward</span>
+                    </a>
+                    <div class="mt-8 pt-6 border-t border-stone-100 flex items-center justify-between">
+                        <div class="flex items-center space-x-6">
+                            <button class="flex items-center space-x-2 text-stone-500 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">favorite</span>
+                                <span class="text-sm font-medium">0</span>
+                            </button>
+                            <button class="flex items-center space-x-2 text-stone-500 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">chat_bubble</span>
+                                <span class="text-sm font-medium">0</span>
+                            </button>
+                        </div>
+                        <button class="text-stone-500 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined">share</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(article);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadFeed();
+        
+        // Update nav based on auth state
+        const user = api.getCurrentUser();
+        const loginBtn = document.querySelector('button.bg-indigo-700');
+        if (user && loginBtn) {
+            loginBtn.textContent = 'Logout';
+            loginBtn.onclick = () => {
+                api.logout();
+                window.location.reload();
+            };
+        } else if (loginBtn) {
+            loginBtn.onclick = () => {
+                window.location.href = '../login_sign_up/code.html';
+            };
+        }
+    });
+</script>
+</body></html>

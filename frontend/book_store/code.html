@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bookstore | Quietude Stories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,700;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-error": "#ffffff",
+                        "primary": "#3318b8",
+                        "secondary-container": "#dce2f3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c8c4d7",
+                        "on-tertiary-container": "#ffbb9c",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "tertiary-fixed-dim": "#ffb693",
+                        "on-background": "#191c1d",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#c5c0ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "primary-fixed": "#e4dfff",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary": "#585f6c",
+                        "on-surface-variant": "#474554",
+                        "surface-variant": "#e1e3e4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed": "#dce2f3",
+                        "on-secondary-fixed-variant": "#404754",
+                        "surface-bright": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#6d2900",
+                        "on-primary-fixed": "#140067",
+                        "surface-dim": "#d9dadb",
+                        "on-secondary-container": "#5e6572",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#351000",
+                        "outline": "#787586",
+                        "inverse-primary": "#c5c0ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#151c27",
+                        "surface-tint": "#5546d8",
+                        "on-primary-fixed-variant": "#3c27c0",
+                        "primary-container": "#4c3bcf",
+                        "tertiary-container": "#923a00",
+                        "inverse-surface": "#2e3132",
+                        "on-primary-container": "#cac5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "1rem",
+                        "unit": "4px",
+                        "reading-width": "680px",
+                        "xl": "4rem",
+                        "lg": "2rem",
+                        "container-max": "1120px",
+                        "xs": "0.5rem",
+                        "md": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Noto Serif"],
+                        "ui-button": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-xl": ["Noto Serif"],
+                        "headline-md": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "ui-button": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .book-card-shadow {
+            box-shadow: 0 4px 20px -10px rgba(49, 46, 129, 0.08);
+        }
+    </style>
+<script src="../api.js"></script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b bg-white/80 backdrop-blur-md border-stone-200 shadow-[0_4px_20px_-10px_rgba(76,59,207,0.05)]">
+<div class="flex justify-between items-center h-16 px-8 max-w-7xl mx-auto">
+<div class="text-2xl font-serif italic font-black text-indigo-700">Quietude Stories</div>
+<nav class="hidden md:flex items-center gap-8 font-serif antialiased text-stone-900">
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80 active:scale-95 transition-transform" href="../homepage/code.html">Home</a>
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80 active:scale-95 transition-transform" href="../story_feed/code.html">Explore</a>
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80 active:scale-95 transition-transform" href="../author_profile/code.html">Profile</a>
+<a class="text-stone-500 hover:text-stone-900 transition-all duration-300 ease-out hover:opacity-80 active:scale-95 transition-transform" href="#">Notifications</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative group hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+<input class="bg-stone-100 border-none rounded-full pl-10 pr-4 py-1.5 text-sm focus:ring-2 focus:ring-indigo-700 w-48 transition-all group-focus-within:w-64" placeholder="Search bookstore..." type="text"/>
+</div>
+<button class="text-indigo-700 font-serif antialiased px-4 py-2 transition-all duration-300 ease-out hover:opacity-80 active:scale-95" id="login-btn">Login</button>
+<div class="relative">
+<span class="material-symbols-outlined text-stone-600">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-indigo-700 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">2</span>
+</div>
+</div>
+</div>
+</header>
+<main class="mt-16 flex-grow">
+<!-- Hero Section -->
+<section class="py-16 bg-stone-50 border-b border-stone-200">
+<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-2xl">
+<h1 class="font-display-xl text-display-xl text-stone-900 mb-4">The Bookstore</h1>
+<p class="font-body-lg text-body-lg text-stone-600 mb-8">A curated collection of long-form thought, physical editions of our most resonant stories, and limited-run journals for the intentional reader.</p>
+</div>
+</div>
+</section>
+<!-- Filters and Content -->
+<section class="max-w-7xl mx-auto px-8 py-12">
+<div class="flex flex-col md:flex-row gap-12">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 flex-shrink-0">
+<div class="sticky top-24">
+<h2 class="font-label-sm text-label-sm text-stone-400 mb-6 uppercase tracking-widest">Categories</h2>
+<ul class="space-y-4 font-body-md text-stone-600">
+<li><button class="flex items-center gap-2 hover:text-indigo-700 transition-colors text-indigo-700 font-bold"><span>All Volumes</span></button></li>
+<li><button class="flex items-center gap-2 hover:text-indigo-700 transition-colors"><span>Fiction</span></button></li>
+<li><button class="flex items-center gap-2 hover:text-indigo-700 transition-colors"><span>Poetry</span></button></li>
+<li><button class="flex items-center gap-2 hover:text-indigo-700 transition-colors"><span>Essay</span></button></li>
+<li><button class="flex items-center gap-2 hover:text-indigo-700 transition-colors"><span>Memoir</span></button></li>
+</ul>
+<div class="mt-12 pt-12 border-t border-stone-200">
+<h2 class="font-label-sm text-label-sm text-stone-400 mb-6 uppercase tracking-widest">Filter by Price</h2>
+<div class="space-y-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-stone-300 text-indigo-700 focus:ring-indigo-700" type="checkbox"/>
+<span class="text-sm text-stone-600 group-hover:text-stone-900 transition-colors">Under $25</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-stone-300 text-indigo-700 focus:ring-indigo-700" type="checkbox"/>
+<span class="text-sm text-stone-600 group-hover:text-stone-900 transition-colors">$25 — $50</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-stone-300 text-indigo-700 focus:ring-indigo-700" type="checkbox"/>
+<span class="text-sm text-stone-600 group-hover:text-stone-900 transition-colors">Over $50</span>
+</label>
+</div>
+</div>
+</div>
+</aside>
+<!-- Grid -->
+<div class="flex-grow">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+<!-- Book 1 -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-stone-100 rounded-lg book-card-shadow relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="minimalist book cover featuring a single ink drop diffusing in water, indigo and cream palette, elegant serif typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVrQGoZ-bV0NWH-YmZI4tAuMLxDD9KIDn9waxgK9vxxBew4qwP2vTsd9kLYDfcQeiXjddWGmdMsVXQrLgweMs_kkdxXikBtzRLlDEVSssChExaggGGlhGuhPQVF1SkxPQSJA0UWlJb_FwM38Zj-_axh5AOKolKmuvAdBWfwSn8w_4aAxhq7CbQMlid-ZPs7pafRjkJO9_449vTv-w0k_KzjZuSh-Hsalg_5DdkZlXq1SaZdw3M0JjHZOsEOQIrgY5jHUKeKDUoPk"/>
+<div class="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<button class="bg-white text-indigo-700 px-6 py-2 rounded-full font-ui-button text-ui-button shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Quick View</button>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-body-lg text-stone-900 leading-tight">The Unspoken Frequency</h3>
+<span class="font-body-md text-stone-900 font-bold">$28.00</span>
+</div>
+<p class="font-body-md text-stone-500 mb-4">Evelyn St. Claire</p>
+<button class="w-full border border-indigo-700 text-indigo-700 py-2.5 rounded-lg font-ui-button text-ui-button hover:bg-indigo-700 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<!-- Book 2 -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-stone-100 rounded-lg book-card-shadow relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="high-end editorial book cover with abstract geometric shapes in muted earthy tones, bold modern sans-serif title" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAChx-dfCeupiDIkJPOodEMpmCHFpuqxOoPG2EdVgO7epW57d2rMbF7aFdM9ePquo55RtwsCfA1uGos6yofujgw_wdSLY4K2w8UhWgM2onlhb5cFjYwRAcCr7jF4dYD3cWskRfK7ikFDHRT0IAbs2gdTTP5aXR5VeMAOZYlDK61Yzaz5HCUkdRPKIqUyqZVFxpwCNgrOQza51_lYg7K4J_9VjumZHkfAwc5JgzSfkHWH8-cEmz9mZbyoX1Vxvyda-VJOTp9NtugEcw"/>
+<div class="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<button class="bg-white text-indigo-700 px-6 py-2 rounded-full font-ui-button text-ui-button shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Quick View</button>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-body-lg text-stone-900 leading-tight">Architecture of Silence</h3>
+<span class="font-body-md text-stone-900 font-bold">$34.00</span>
+</div>
+<p class="font-body-md text-stone-500 mb-4">Julian Thorne</p>
+<button class="w-full border border-indigo-700 text-indigo-700 py-2.5 rounded-lg font-ui-button text-ui-button hover:bg-indigo-700 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<!-- Book 3 -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-stone-100 rounded-lg book-card-shadow relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="literary journal cover with a close-up texture of handmade paper and a subtle blind debossed title" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Nkcdp8ytTlFi3eNcu0x8nIXJXqFnX342aF3_abMadMJmmM6dtbZKk4SDlY1D0bTqXu7bMXvTo6pm4TxvCz6CEOJ9HB-ZZAQIpJz82Yq_r4836R23TArjYplrxThUrDzYEIXUdwNlD4cd1zT8ITmBNAfsEvoFRRZV0Q0N3Joo7VDZ0Vx4TjKjoQp815YLHHbTTGXlkR7QHg1TSE98U1zn0aMFUjDCegvFKKBTPO3v4GcNpxMrvyRotJv41ey_rm8aE5ELwgCeCQ0"/>
+<div class="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<button class="bg-white text-indigo-700 px-6 py-2 rounded-full font-ui-button text-ui-button shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Quick View</button>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-body-lg text-stone-900 leading-tight">Quietude Vol. IV</h3>
+<span class="font-body-md text-stone-900 font-bold">$18.00</span>
+</div>
+<p class="font-body-md text-stone-500 mb-4">Quietude Collective</p>
+<button class="w-full border border-indigo-700 text-indigo-700 py-2.5 rounded-lg font-ui-button text-ui-button hover:bg-indigo-700 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<!-- Book 4 -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-stone-100 rounded-lg book-card-shadow relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="minimalist poetry book cover with a thin golden line across a black canvas, delicate serif text" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG2igtkD7J_MV01F9RKfHnfAFWsChb7nQoOtLuSXN_SPhtPUkdz70vU66zD7eqd_ZjgLyBwV7JGBIgZqYlNkCPkw-okCxJNKa2GY9Hx0lHD1r737vdmUSwRTGKrPN0wqzDD9B57GCCYsoKpfhnkpbXAUMaqs9jOyKKvBka5obDnybM42me_bmJak4h_RgfrLLnpUSf9IHMktn886pTx_tFNyfX9k6OSY8aG-5B9N_1owFfIfMXybDXK7HKgULjARLsbeHfILn41F4"/>
+<div class="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<button class="bg-white text-indigo-700 px-6 py-2 rounded-full font-ui-button text-ui-button shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Quick View</button>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-body-lg text-stone-900 leading-tight">Lines in the Sand</h3>
+<span class="font-body-md text-stone-900 font-bold">$22.00</span>
+</div>
+<p class="font-body-md text-stone-500 mb-4">Marcus Aurel</p>
+<button class="w-full border border-indigo-700 text-indigo-700 py-2.5 rounded-lg font-ui-button text-ui-button hover:bg-indigo-700 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<!-- Book 5 -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-stone-100 rounded-lg book-card-shadow relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="biography book cover featuring a soft focus portrait in black and white with an indigo overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZVBMrp7ecXEq8nYO1DCvrugfO3WmkoMOLHc8G05wu047aQk1_7kiwmxGfxY-D4aCIHrc7AdFh59wnt8OouOlUtaC79s5IbOXzOlOv22wAx4kZZBgDC6I3_xnf-VkE1Ak7R1w3PfZJosmiwIDlxrlIRcleH5jSz2CGDhIH-9AXeaUg2Q2uz5SI3UjcKXhDzm1mszaQXSIfytMGExSqhXsfzkqAwOnOAm9WrhLp_g1QTByNvuB5A9-AHcBCJntBuu6adA1aGS_Lkag"/>
+<div class="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<button class="bg-white text-indigo-700 px-6 py-2 rounded-full font-ui-button text-ui-button shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Quick View</button>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-body-lg text-stone-900 leading-tight">The Weight of Light</h3>
+<span class="font-body-md text-stone-900 font-bold">$30.00</span>
+</div>
+<p class="font-body-md text-stone-500 mb-4">Sarah Penning</p>
+<button class="w-full border border-indigo-700 text-indigo-700 py-2.5 rounded-lg font-ui-button text-ui-button hover:bg-indigo-700 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<!-- Book 6 -->
+<div class="group">
+<div class="aspect-[3/4] mb-6 overflow-hidden bg-stone-100 rounded-lg book-card-shadow relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="memoir book cover with an illustration of a single chair in an empty room, soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC-aV_CrQrGT0GZU2mvMhC5NHwZVa696mQtzJAdVJAJb15D2GW89UkwnX-AGjku4ILQXTV-QnJbtGzHPhplVtRE-cXHOHx8nXkUM28NZRse70DnoamBDd-w3LaOoUQTzzy0lqBVsrubKBR7cjJCkydjKP39YLvGIyzMjf_jsc5lpj4_T5t5gOEcUol9cOpMG3EqG0n4CCTuWeE2uvJ_vlf9Qpeh9xNPS4o9TtyDXasJbkfADganxAAgLu7dN8bwjBkSj4CXSYLq7A"/>
+<div class="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<button class="bg-white text-indigo-700 px-6 py-2 rounded-full font-ui-button text-ui-button shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Quick View</button>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-body-lg text-stone-900 leading-tight">After the Interval</h3>
+<span class="font-body-md text-stone-900 font-bold">$26.00</span>
+</div>
+<p class="font-body-md text-stone-500 mb-4">David Kessler</p>
+<button class="w-full border border-indigo-700 text-indigo-700 py-2.5 rounded-lg font-ui-button text-ui-button hover:bg-indigo-700 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-24 flex items-center justify-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-stone-200 text-stone-400 hover:text-indigo-700 hover:border-indigo-700 transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-700 text-white font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-stone-600 hover:bg-stone-100 transition-all">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-stone-600 hover:bg-stone-100 transition-all">3</button>
+<span class="text-stone-400 mx-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-stone-600 hover:bg-stone-100 transition-all">12</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-stone-200 text-stone-400 hover:text-indigo-700 hover:border-indigo-700 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Membership CTA -->
+<section class="bg-indigo-900 py-20 mt-20">
+<div class="max-w-7xl mx-auto px-8 text-center text-white">
+<h2 class="font-display-xl text-headline-lg mb-6">Join the Quietude Society</h2>
+<p class="font-body-lg text-indigo-200 mb-10 max-w-2xl mx-auto">Receive quarterly physical journals, exclusive first-access to limited editions, and invitations to our intimate literary salons.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+<input class="bg-indigo-800 border-none rounded-lg px-6 py-3 text-white placeholder-indigo-400 focus:ring-2 focus:ring-white" placeholder="Your email address" type="email"/>
+<button class="bg-white text-indigo-900 px-8 py-3 rounded-lg font-ui-button text-ui-button font-bold hover:bg-indigo-50 transition-all">Subscribe</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t mt-auto bg-stone-50 border-stone-200">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div class="space-y-4">
+<div class="font-serif italic font-bold text-stone-900">Quietude Stories</div>
+<p class="font-serif text-sm tracking-tight text-stone-600">© 2024 Quietude Stories. A sanctuary for long-form thought.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
+<a class="font-serif text-sm tracking-tight text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">About</a>
+<a class="font-serif text-sm tracking-tight text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Guidelines</a>
+<a class="font-serif text-sm tracking-tight text-stone-900 font-medium hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Bookstore</a>
+<a class="font-serif text-sm tracking-tight text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Authors</a>
+<a class="font-serif text-sm tracking-tight text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Support</a>
+<a class="font-serif text-sm tracking-tight text-stone-500 hover:text-indigo-600 hover:underline decoration-stone-300 underline-offset-4 transition-opacity" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+<script>
+    async function loadBooks() {
+        const books = await api.getBooks();
+        const container = document.querySelector('.grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3');
+        if (!container || books.length === 0) return;
+
+        // Optionally clear static books
+        // container.innerHTML = '';
+
+        books.forEach(book => {
+            const bookDiv = document.createElement('div');
+            bookDiv.className = "group";
+            bookDiv.innerHTML = `
+                <div class="aspect-[3/4] mb-6 overflow-hidden bg-stone-100 rounded-lg book-card-shadow relative">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${book.cover_url || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400'}" alt="${book.title}">
+                    <div class="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <button class="bg-white text-indigo-700 px-6 py-2 rounded-full font-ui-button text-ui-button shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">Quick View</button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-headline-md text-body-lg text-stone-900 leading-tight">${book.title}</h3>
+                    <span class="font-body-md text-stone-900 font-bold">${book.price}</span>
+                </div>
+                <p class="font-body-md text-stone-500 mb-4">${book.author}</p>
+                <button class="w-full border border-indigo-700 text-indigo-700 py-2.5 rounded-lg font-ui-button text-ui-button hover:bg-indigo-700 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                    Add to Cart
+                </button>
+            `;
+            container.prepend(bookDiv); // Add dynamic books to the top
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadBooks();
+        
+        // Update nav based on auth state
+        const user = api.getCurrentUser();
+        const loginBtn = document.getElementById('login-btn');
+        if (user && loginBtn) {
+            loginBtn.textContent = 'Logout';
+            loginBtn.onclick = () => {
+                api.logout();
+                window.location.reload();
+            };
+        } else if (loginBtn) {
+            loginBtn.onclick = () => {
+                window.location.href = '../login_sign_up/code.html';
+            };
+        }
+    });
+</script>
+</body></html>
