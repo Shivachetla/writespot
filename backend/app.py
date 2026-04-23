@@ -4,16 +4,37 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from models import db, User, Story, Book
 import os
 
-app = Flask(__name__, static_folder='../frontend', static_url_path='')
+app = Flask(__name__, static_folder='../frontend', static_url_path='/')
 CORS(app)
 
 # Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quietude.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = 'super-secret-key' # Change this in production
+app.config['JWT_SECRET_KEY'] = 'super-secret-key'
 
 db.init_app(app)
 jwt = JWTManager(app)
+
+# Serve Frontend Routes
+@app.route('/')
+def index():
+    return app.send_static_file('homepage/code.html')
+
+@app.route('/login')
+def login_page():
+    return app.send_static_file('login_sign_up/code.html')
+
+@app.route('/feed')
+def feed_page():
+    return app.send_static_file('story_feed/code.html')
+
+@app.route('/editor')
+def editor_page():
+    return app.send_static_file('story_editor/code.html')
+
+@app.route('/store')
+def store_page():
+    return app.send_static_file('book_store/code.html')
 
 # Routes
 
@@ -80,15 +101,6 @@ def get_books():
 def get_user_profile(username):
     user = User.query.filter_by(username=username).first_or_404()
     return jsonify(user.to_dict())
-
-# Serve Frontend
-@app.route('/')
-def index():
-    return app.send_static_file('homepage/code.html')
-
-@app.route('/<path:path>')
-def serve_static(path):
-    return app.send_static_file(path)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
