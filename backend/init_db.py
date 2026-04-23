@@ -10,45 +10,39 @@ def init_db():
             print("Database already initialized.")
             return
 
-        # Add sample user
-        elara = User(username="elara", email="elara@quietude.com", bio="Anthropologist tracing the invisible threads of human experience.")
-        elara.set_password("password123")
-        db.session.add(elara)
+        # Create 10 authors
+        authors = []
+        author_names = [
+            ("Elara Aldridge", "elara@quietude.com"),
+            ("Julian Thorne", "julian@quietude.com"),
+            ("Marcus Aurel", "marcus@quietude.com"),
+            ("Sarah Penning", "sarah@quietude.com"),
+            ("David Kessler", "david@quietude.com"),
+            ("Elena Vance", "elena@quietude.com"),
+            ("Silas Marner", "silas@quietude.com"),
+            ("Lyra Belacqua", "lyra@quietude.com"),
+            ("Arthur Dent", "arthur@quietude.com"),
+            ("Clara Oswald", "clara@quietude.com")
+        ]
         
-        julian = User(username="julian", email="julian@quietude.com", bio="Cultural critic and letter writing enthusiast.")
-        julian.set_password("password123")
-        db.session.add(julian)
-
-        # Add sample stories
-        s1 = Story(
-            title="The Architecture of Silence: Navigating the Modern Noise",
-            content="In an era defined by constant connectivity, the rarest luxury is the absence of sound...",
-            excerpt="In an era defined by constant connectivity, the rarest luxury is the absence of sound. We explore how intentional solitude shapes the creative psyche and why we must build cathedrals of quiet in our daily lives...",
-            category="PHILOSOPHY",
-            read_time="12 MIN READ",
-            image_url="https://lh3.googleusercontent.com/aida-public/AB6AXuDNLJT6lhrBEwlnbbWnud-TfIQxIJ7z_cMLndPAmWI7mSTR29oiLPV1HxRvz1GnLBt3wI70Rt5awZZLG_aNbjRDi8MqfKId4o_8qQQLRC3BUdHG6aBXBQID58WBDbTyFLMq-SXhEJP0YZ1VCoplqttpO3N8YGdJu2FSiAbr3rgv1TZ-9RNY7DFeJTo_oEB3X2AvTzGOwZELALdKnbdglpaxYD1gKIGM8N1az1nB9EWykCofPM41MsJgn6DbYtAyYzyvtdBFm9Uj5aw",
-            author=elara
-        )
+        for name, email in author_names:
+            username = name.split()[0].lower() + "_" + str(author_names.index((name, email)))
+            user = User(username=username, email=email, bio=f"A passionate storyteller and explorer of human experience.")
+            user.set_password('password123')
+            db.session.add(user)
+            authors.append(user)
         
-        s2 = Story(
-            title="The Forgotten Art of Letter Writing",
-            content="Before the instant gratification of digital communication, there was the deliberate act of the handwritten letter...",
-            excerpt="Before the instant gratification of digital communication, there was the deliberate act of the handwritten letter...",
-            category="CULTURE",
-            read_time="8 MIN READ",
-            image_url="",
-            author=julian
-        )
+        db.session.commit() # Commit to get IDs
 
-        # Add 100 sample stories
+        # Add 100 sample stories distributed among 10 authors
         categories = ["PHILOSOPHY", "CULTURE", "TRAVEL", "FICTION", "MEMOIR"]
         for i in range(1, 101):
             category = categories[i % len(categories)]
-            author = elara if i % 2 == 0 else julian
+            author = authors[i % len(authors)] # Rotate through 10 authors
             story = Story(
                 title=f"The Silent Echo Vol. {i}",
-                content=f"This is the content for story number {i}. It explores the depths of {category.lower()} and the human condition...",
-                excerpt=f"An exploration into {category.lower()} in volume {i} of our ongoing series.",
+                content=f"This is the content for story number {i}. Written by {author.username}, it explores the depths of {category.lower()} and the human condition...",
+                excerpt=f"A deep dive into {category.lower()} by {author.username}.",
                 category=category,
                 read_time=f"{5 + (i % 15)} MIN READ",
                 image_url=f"https://picsum.photos/seed/{i+100}/800/600",
@@ -58,16 +52,17 @@ def init_db():
 
         # Add 100 sample books
         for i in range(1, 101):
+            author_name = author_names[i % len(author_names)][0]
             book = Book(
                 title=f"Quietude Collection: Volume {i}",
-                author=f"Author {i}",
+                author=author_name,
                 price=f"${15 + (i % 40)}.00",
                 cover_url=f"https://picsum.photos/seed/{i}/400/600"
             )
             db.session.add(book)
         
         db.session.commit()
-        print(f"Database initialized with {Story.query.count()} stories and {Book.query.count()} books.")
+        print(f"Database initialized with {User.query.count()} authors, {Story.query.count()} stories, and {Book.query.count()} books.")
 
 if __name__ == '__main__':
     init_db()
