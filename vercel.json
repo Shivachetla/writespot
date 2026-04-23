@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/app.py"
+    },
+    {
+      "src": "/login",
+      "dest": "frontend/login_sign_up/code.html"
+    },
+    {
+      "src": "/feed",
+      "dest": "frontend/story_feed/code.html"
+    },
+    {
+      "src": "/editor",
+      "dest": "frontend/story_editor/code.html"
+    },
+    {
+      "src": "/store",
+      "dest": "frontend/book_store/code.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/homepage/code.html"
+    }
+  ]
+}
